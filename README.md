@@ -11,4 +11,5 @@
 
 <img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-23 at 01 19 08" src="https://github.com/user-attachments/assets/a42f13c3-7fc7-42ec-a9fb-790acbc299ac" />
 <img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-23 at 01 19 10" src="https://github.com/user-attachments/assets/9d2d9f27-0e4a-40a0-afd8-0379f744d1f6" />
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-23 at 01 19 18" src="https://github.com/user-attachments/assets/bc522841-a33d-478f-942b-7c417993451f" />
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-23 at 01 48 56" src="https://github.com/user-attachments/assets/29bbb230-218a-49d9-964f-29eb1ec4c7d7" />
+
