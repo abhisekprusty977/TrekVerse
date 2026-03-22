@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    private  var AlternateIcons : [String] = ["AppIcon-Bag","AppIcon-Camera","AppIcon-CampFire","AppIcon-MagGlass",
-    "AppIcon-Map"
+    private  var AlternateIcons : [String] = ["AppIcon-Bag","AppIcon-Camera","AppIcon-Campfire-Preview","AppIcon-MagGlass",
+    "AppIcon-Map","AppIcon-Mushroom-Preview"
     ]
     var body: some View {
         List {
@@ -45,29 +45,34 @@ struct SettingsView: View {
                     
                     HStack {
                         
-                        ForEach(AlternateIcons.indices, id: \.self) { item in
-                                
-                                Button {
-                                    UIApplication.shared.setAlternateIconName(AlternateIcons[item]){
-                                        error in
-                                        
-                                        if let error = error {
-                                            print("error: \(error)")
-                                        }else{
-                                            
-                                        }
-                                        
-                                      
+                        ForEach(AlternateIcons, id: \.self) { iconName in
+                            Button {
+                                UIApplication.shared.setAlternateIconName(iconName) { error in
+                                    if let error = error {
+                                        print("error: \(error)")
                                     }
-                                } label: {
-                                    Image("\(AlternateIcons[item])-Preview")
+                                }
+                            } label: {
+                                if let uiImage = UIImage(named: "\(iconName)-Preview") ?? UIImage(named: iconName) {
+                                    Image(uiImage: uiImage)
                                         .resizable()
-                                        .frame(width: 80,height: 80)
+                                        .frame(width: 80, height: 80)
                                         .scaledToFit()
                                         .cornerRadius(15)
+                                } else {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(Color.gray.opacity(0.2))
+                                            .frame(width: 80, height: 80)
+                                        Image(systemName: "AppIcon-Campfire-Preview")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundStyle(.secondary)
+                                            .padding(18)
+                                    }
                                 }
-                                .buttonStyle(BorderlessButtonStyle())
-                            
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
                         }
                     }
                     
@@ -132,6 +137,15 @@ struct SettingsView: View {
                                     rowLabel: "Website",
                                     rowLinkLabel: "Linkdin.com",
                                     rowLinkDestination: "https://in.linkedin.com/in/abhisek-prusty-23876b191")
+            }
+        }
+        .onAppear {
+            UIApplication.shared.setAlternateIconName("AppIcon-Campfire-Preview") { error in
+                if let error = error {
+                    print("Failed to set icon: \(error)")
+                } else {
+                    print("Successfully set alternate icon: AppIcon-CampFire")
+                }
             }
         }
     }
